@@ -11,6 +11,7 @@ defmodule RealWorldWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :put_secure_browser_headers, %{"Access-Control-Allow-Origin" => "*"}
   end
 
   scope "/", RealWorldWeb do
