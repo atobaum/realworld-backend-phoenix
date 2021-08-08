@@ -20,6 +20,67 @@ defmodule RealWorldWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/api", RealWorldWeb do
+    pipe_through :api
+
+    # authentication
+    post "/users/login", ApiController, :register_user
+
+    # registration
+    post "/users", ApiController, :register_user
+
+    # get current uder
+    get "/user", ApiController, :register_user
+
+    # update user
+    put "/user", ApiController, :register_user
+
+    # get profile
+    get "/profiles/:username", ApiController, :register_user
+
+    # follow user
+    post "/profiles/:username/follow", ApiController, :register_user
+
+    # unfollow user
+    delete "/profiles/:username/follow", ApiController, :register_user
+
+    # list articles
+    get "/articles", ApiController, :get_articles
+
+    # feed articles
+    get "/articles/feed", ApiController, :get_articles
+
+    # get article
+    get "/articles/:slug", ApiController, :get_articles
+
+    # create article
+    get "/articles", ApiController, :get_articles
+
+    # update article
+    put "/articles/:slug", ApiController, :get_articles
+
+    # delete article
+    delete "/articles/:slug", ApiController, :get_articles
+
+    # add comments to an article
+    post "/articles/:slug/comments", ApiController, :get_articles
+
+    # get comments from an article
+    get "/articles/:slug/comments", ApiController, :get_articles
+
+    # delete comment
+    delete "/articles/:slug/comments/:id", ApiController, :get_articles
+
+    # favorite article
+    post "/articles/:slug/favorite", ApiController, :get_articles
+
+    # unfavorite article
+    delete "/articles/:slug/favorite", ApiController, :get_articles
+
+    # get tags
+    get "/tags", ApiController, :get_tags
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", RealWorldWeb do
   #   pipe_through :api
